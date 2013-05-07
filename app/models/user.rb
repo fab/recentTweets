@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
 
   def tweets_stale?
     return true if self.tweets.empty?
-    (Time.now - self.tweets.last.tweeted_at) > 60
+    (Time.now - self.tweets.last.tweeted_at) > 600
   end
 end

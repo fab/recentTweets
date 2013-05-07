@@ -3,12 +3,19 @@
 #   erb :index
 # end
 
-get '/:username' do
+get '/' do
+
+  erb :index
+end
+
+post '/' do
   @user = User.find_or_create_by_username(params[:username])
+
   if @user.tweets_stale?
+    puts "API call"
     @user.fetch_tweets!
   end
 
   @tweets = @user.tweets.order("tweeted_at DESC").limit(10)
-  erb :index
+  erb :_tweets, :layout => false
 end

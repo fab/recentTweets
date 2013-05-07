@@ -7,3 +7,8 @@
 th {
   text-align: left;
 }
+
+.loader {
+  margin-top: 20px;
+  text-align: center;
+}
